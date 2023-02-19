@@ -33,7 +33,6 @@ function cargarEventListeners() {
     carritoHTML();
   });
 
-  // Sirve para que la página detecte cada vez que le damos click a algún curso:
   listaCursos.addEventListener("click", agregarCurso);
 
   // Eliminar cursos del carrito
@@ -133,8 +132,6 @@ function carritoHTML() {
     `;
 
     // 3ro, agrega el recíen creado código HTML, en la etiqueta <tbody></tbody> 
-    // para que se coloquen en el menú desplegable del Carrito. 
-    // Usamos una variable creada al inicio del script que hace referencia al tbody: contenedorCarrito.
     contenedorCarrito.appendChild(row);
   });
 
