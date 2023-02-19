@@ -186,7 +186,6 @@ function eliminarCurso(e){
 
     // Filtro: solo quedarán los elementos que NO tengan su id igual al de la X...
     articulosCarrito = articulosCarrito.filter(curso => curso.id !== cursoId);
-    console.log(articulosCarrito);
 
     // Actualizamos el HTML con el nuevo array...
     carritoHTML();
