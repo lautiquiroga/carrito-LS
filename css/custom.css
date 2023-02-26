@@ -41,6 +41,7 @@ ul {
   padding: 5rem 0 3rem 0;
   font-size: 4.5rem;
 }
+
 .submenu {
   position: relative;
 }
@@ -52,7 +53,6 @@ ul {
   display: block;
   position: absolute;
   right: 0;
-
   top: 100%;
   z-index: 1;
   background-color: white;
@@ -124,6 +124,7 @@ ul {
 }
 .icono3 {
   background-image: url(../img/icono3.png);
+  margin-bottom: 0;
 }
 
 #lista-cursos .row {
@@ -178,6 +179,23 @@ ul {
   .imagen {
     display: none;
   }
+  .card {
+    margin-bottom: 2rem;
+  }
+  .row {
+    margin-bottom: 0 !important;
+  }
+  .info-card {
+    text-align: start;
+  }
+  .submenu:hover #carrito {
+    left: 0;
+    top: 100%;
+  }
+  .borrar-curso {
+    margin-left: -2rem;
+
+}
 }
 
 /* Estilo para la notificación */
