@@ -33,6 +33,7 @@ function cargarEventListeners() {
     carritoHTML();
   });
 
+  // Sirve para que la página detecte cada vez que le damos click a algún curso:
   listaCursos.addEventListener("click", agregarCurso);
 
   // Eliminar cursos del carrito
@@ -53,28 +54,37 @@ function cargarEventListeners() {
 
 
 
-
 // Funciones
 
 function agregarCurso(e) {
-// Crea una variable que se refiere al curso seleccionado.
-// Se ejecuta al hacer click en un curso.
+  // Crea una variable que se refiere al curso seleccionado.
+  // Se ejecuta al hacer click en un curso.
 
   e.preventDefault();
-  if (e.target.classList.contains("agregar-carrito")) { // Solamente si se clickea el botón "Agregar al Carrito"...
-    const cursoSeleccionado = e.target.parentElement.parentElement; // Se crea una nueva variable que se refiere al curso seleccionado.
-    leerDatosCurso(cursoSeleccionado); // Ejecuta la función leerDatosCurso.
-  }
-} 
+  if (e.target.classList.contains("agregar-carrito")) {
+    const cursoSeleccionado = e.target.parentElement.parentElement;
+    leerDatosCurso(cursoSeleccionado);
+    // alert('Curso agregado correctamente al Carrito.')
 
+    // Muestra la notificación
+    var toast = document.querySelector('.toast');
+    toast.hidden = false;
+
+    // Oculta la notificación después de 1 segundo
+    setTimeout(function () {
+      toast.hidden = true;
+    }, 2000);
+
+  }
+}
 
 
 
 
 
 function leerDatosCurso(curso) {
-// Registra, en un nuevo objeto, el contenido HTML del curso clickeado.
-// Se ejecuta en la función agregarCurso.
+  // Registra, en un nuevo objeto, el contenido HTML del curso clickeado.
+  // Se ejecuta en la función agregarCurso.
 
   // 1ro se crea un objeto con el contenido del curso al que le dimos click en el botón:
   const infoCurso = {
@@ -84,19 +94,18 @@ function leerDatosCurso(curso) {
     id: curso.querySelector("a").getAttribute("data-id"),
     cantidad: 1,
   };
-  
+
 
   // 2do, revisa si un elemento ya existe en el carrito y agrega el objeto infoCurso al array articulosCarrito:
-  // Analiza solamente al nuevo elemento:
-  const existe = articulosCarrito.some(elemento => elemento.id === infoCurso.id); 
 
-  if(!existe){
-  // Si el curso clickeado NO existe en el array articulosCarrito, añade el nuevo objeto al array:
+  const existe = articulosCarrito.some(elemento => elemento.id === infoCurso.id);
+
+  if (!existe) {
+
     articulosCarrito = [...articulosCarrito, infoCurso];
   } else {
-  // Si el curso clickeado SÍ existe en el array articulosCarrito, incrementa la propiedad 'cantidad' de ese curso:
     const cursos = articulosCarrito.forEach(elemento => {
-      if(elemento.id === infoCurso.id){
+      if (elemento.id === infoCurso.id) {
         elemento.cantidad++;
         return elemento;
       }
@@ -105,7 +114,7 @@ function leerDatosCurso(curso) {
 
 
   // 3ro, ejecuta la siguiente función:
-  carritoHTML(); 
+  carritoHTML();
 }
 
 
@@ -114,17 +123,17 @@ function leerDatosCurso(curso) {
 
 
 function carritoHTML() {
-// Coloca las propiedades del objeto recíen creado en el menú desplegable del Carrito:
-// Se ejecuta en la función leerDatosCurso.
+  // Coloca las propiedades del objeto recíen creado en el menú desplegable del Carrito:
+  // Se ejecuta en la función leerDatosCurso.
 
   // 1ro, limpia el Carrito.
   limpiarHTML();
 
   // 2do, crea código HTML para mostrar (en la web) las propiedades de los cursos clickeados.
-  articulosCarrito.forEach( articulo => {
+  articulosCarrito.forEach(articulo => {
     const row = document.createElement("tr");
     row.innerHTML = `
-      <td> <img src=${articulo.imagen} width="100" > </td>
+      <td class='imagen'> <img src=${articulo.imagen} width="100" > </td>
       <td style="text-align: center"> ${articulo.titulo} </td>
       <td style="text-align: center"> ${articulo.precio} </td>
       <td style="text-align: center">  ${articulo.cantidad} </td>
@@ -144,7 +153,7 @@ function carritoHTML() {
 
 
 
-function sincronizarStorage(){
+function sincronizarStorage() {
   localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
 }
 
@@ -153,15 +162,11 @@ function sincronizarStorage(){
 
 
 
-function limpiarHTML(){
-// Limpia el HTML del menú desplegable del Carrito para que no se repita el array articulosCarrito cada vez que clickeamos un nuevo curso.
-// Se ejecuta al inicio de la función carritoHTML.
+function limpiarHTML() {
+  // Limpia el HTML del menú desplegable del Carrito para que no se repita el array articulosCarrito cada vez que clickeamos un nuevo curso.
+  // Se ejecuta al inicio de la función carritoHTML.
 
-  // Forma lenta:
-  // contenedorCarrito.innerHTML = '';
-
-  // Forma rápida:
-  while(contenedorCarrito.firstChild){
+  while (contenedorCarrito.firstChild) {
     contenedorCarrito.removeChild(contenedorCarrito.firstChild);
   }
 }
@@ -171,12 +176,12 @@ function limpiarHTML(){
 
 
 
-function eliminarCurso(e){
-// Elima los cursos del carrito al tocar la X
-// Se ejecuta al hacer click en el menú desplegable del carrito.
+function eliminarCurso(e) {
+  // Elimina los cursos del carrito al tocar la X
+  // Se ejecuta al hacer click en el menú desplegable del carrito.
 
   if (e.target.classList.contains("borrar-curso")) {
-  // Solamente se ejecuta el siguiente código si se da click sobre la clase "borrar-curso" (en el botón X).
+    // Solamente se ejecuta el siguiente código si se da click sobre la clase "borrar-curso" (en el botón X).
 
     // el botón X tiene el mismo id que el curso al que pertenece, por lo tanto, necesitamos obtener el id del botón X para compararlo con los id de todos los cursos del array articulosCarrito...
     const cursoId = e.target.getAttribute('data-id');
