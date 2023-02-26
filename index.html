@@ -27,7 +27,7 @@
                                 <table id="lista-carrito" class="u-full-width">
                                     <thead>
                                         <tr>
-                                            <th>Imagen</th>
+                                            <th class="imagen">Imagen</th>
                                             <th>Nombre</th>
                                             <th>Precio</th>
                                             <th>Cantidad</th>
@@ -54,7 +54,7 @@
                     <div class="contenido-hero">
                         <h2>Aprende algo nuevo</h2>
                         <p>Todos los cursos a $15</p>
-                        <form action="#" id="busqueda" method="post" class="formulario">
+                        <form  id="busqueda" class="formulario">
                             <input class="u-full-width" type="text" placeholder="¿Que te gustaría Aprender?"
                                 id="buscador">
                             <input type="submit" id="submit-buscador" class="submit-buscador">
@@ -86,13 +86,13 @@
     </div>
 
     <div id="lista-cursos" class="container">
-        <h1 id="encabezado" class="encabezado">Cursos En Línea</h1>
+        <h1 id="encabezado" class="encabezado">Cursos en línea</h1>
         <div class="row">
             <div class="four columns">
                 <div class="card">
                     <img src="img/curso1.jpg" class="imagen-curso u-full-width">
                     <div class="info-card">
-                        <h4>HTML5, CSS3, JavaScript para Principiantes</h4>
+                        <h4>HTML5, CSS3, JavaScript</h4>
                         <p>Juan Pedro</p>
                         <img src="img/estrellas.png">
                         <p class="precio">$200 <span class="u-pull-right ">$15</span></p>
@@ -147,7 +147,7 @@
                 <div class="card">
                     <img src="img/curso5.jpg" class="imagen-curso u-full-width">
                     <div class="info-card">
-                        <h4>Decoración con productos de tu hogar</h4>
+                        <h4>Decoración para tu hogar</h4>
                         <p>Juan Pedro</p>
                         <img src="img/estrellas.png">
                         <p class="precio">$200 <span class="u-pull-right ">$15</span></p>
@@ -201,7 +201,7 @@
                 <div class="card">
                     <img src="img/curso4.jpg" class="imagen-curso u-full-width">
                     <div class="info-card">
-                        <h4>Cosecha tus propias frutas y verduras</h4>
+                        <h4>Cosecha frutas y verduras</h4>
                         <p>Juan Pedro</p>
                         <img src="img/estrellas.png">
                         <p class="precio">$200 <span class="u-pull-right ">$15</span></p>
@@ -276,6 +276,11 @@
             </div>
         </div>
     </footer>
+
+    <div hidden='true' class="toast">
+        Curso agregado correctamente al Carrito.
+      </div>
+
 
     <script src="js/codigo.js"></script>
 
