@@ -68,10 +68,12 @@ function agregarCurso(e) {
 
     // Notificación
     var toast = document.querySelector('.toast');
-    if(toast.hidden = true){
+    
+    // Solo se ejecuta si está oculta
+    if(toast.hidden == true){
       // Muestra la notificación
       toast.hidden = false;
-      // Oculta la notificación después de 1 segundo
+      // Oculta la notificación después de 2 segundos
       setTimeout(function () {
         toast.hidden = true;
       }, 2000);
