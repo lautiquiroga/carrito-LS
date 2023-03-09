@@ -66,15 +66,16 @@ function agregarCurso(e) {
     leerDatosCurso(cursoSeleccionado);
     // alert('Curso agregado correctamente al Carrito.')
 
-    // Muestra la notificación
+    // Notificación
     var toast = document.querySelector('.toast');
-    toast.hidden = false;
-
-    // Oculta la notificación después de 1 segundo
-    setTimeout(function () {
-      toast.hidden = true;
-    }, 2000);
-
+    if(toast.hidden = true){
+      // Muestra la notificación
+      toast.hidden = false;
+      // Oculta la notificación después de 1 segundo
+      setTimeout(function () {
+        toast.hidden = true;
+      }, 2000);
+    }
   }
 }
 
